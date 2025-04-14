@@ -1,0 +1,52 @@
+name: Test and Analyze JS Project
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🧪 Run Jest tests with coverage
+        run: npx jest --coverage
+
+      - name: 🧬 Run Stryker mutation testing
+        run: npx stryker run
+
+      - name: 📊 Run Plato for code metrics
+        run: |
+          mkdir -p reports/plato
+          npx plato -r -d reports/plato src
+
+      - name: 📤 Upload coverage reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/
+
+      - name: 📤 Upload Stryker report
+        uses: actions/upload-artifact@v3
+        with:
+          name: mutation-report
+          path: reports/mutation/html/
+
+      - name: 📤 Upload Plato report
+        uses: actions/upload-artifact@v3
+        with:
+          name: plato-report
+          path: reports/plato/
