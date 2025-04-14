@@ -1,0 +1,13 @@
+[
+    {"func":"func1.js",
+     "testfile":"test/func1.test.js"
+    },
+
+    {"func":"func2.js",
+     "testfile":"test/func2.test.js"
+    },
+
+    {"func":"func3.js",
+     "testfile":"test/func3.test.js"
+    }
+]

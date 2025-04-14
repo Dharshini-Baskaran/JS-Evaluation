@@ -1,0 +1,26 @@
+{
+  "name": "js_testcase",
+  "version": "1.0.0",
+  "main": "performance.js",
+  "scripts": {
+    "test": "jest",
+    "evaluate": "node performance.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dharshini-Baskaran/JS_testcase.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dharshini-Baskaran/JS_testcase/issues"
+  },
+  "homepage": "https://github.com/Dharshini-Baskaran/JS_testcase#readme",
+  "description": "",
+  "devDependencies": {
+    "@stryker-mutator/core": "^8.7.1",
+    "@stryker-mutator/jest-runner": "^8.7.1",
+    "jest": "^29.7.0"
+  }
+}
